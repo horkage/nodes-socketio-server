@@ -30,7 +30,7 @@ var bob = function meatGrinder() {
                 if (guy.status != "dead") {
                     // fight the ai
                     guy.status = "complete"
-                    guy.experience = 100
+                    guy.experience = Number(guy.experience) + 100
                     guy.doodid = Number(guy.doodid)
                     guy.rarity = Number(guy.rarity)
                     guy.level = Number(guy.level)
@@ -80,6 +80,15 @@ function tossThisGuyIntoTheWild(data) {
     guy.missionStart = now
     guy.missionDuration = now + 30000
     theWild.push(guy)
+
+    /*
+    clientDoods[guy.theOwner].forEach(function(existingDood, index) {
+        if (guy.doodid == existingDood.doodid) {
+            console.log('we have a match, modify master database')  
+            clientDoods[guy.theOwner][index] = guy
+        }
+    })
+    */
 }
 
 io.on('connection', function(client){
